@@ -9,7 +9,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "elint": "eslint --ext .ts,tsx --ignore-path .gitignore .",
+    "elint:fix": "eslint --fix --ext ts,tsx --ignore-path .gitignore ."
   },
   "author": "Yoshiaki Itakura (https://github.com/negibouze)",
   "license": "MIT",
@@ -58,6 +59,18 @@
       ]
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts(x)?": "eslint",
+    "src/**/*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "react": "^16.12.0",
@@ -85,6 +98,8 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.4",
     "node-loader": "^0.6.0",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
