@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sidebar.scss';
+// import styled from 'styled-components';
 
 const Sidebar: React.FC = () => {
   return (
@@ -15,4 +15,8 @@ const Sidebar: React.FC = () => {
   );
 };
 
-export default Sidebar;
+const StyledSidebar: React.FC = () => {
+  return <Sidebar />;
+};
+
+export default StyledSidebar;
