@@ -1,22 +1,47 @@
 import React from 'react';
-// import styled from 'styled-components';
+import { css } from '@emotion/core';
+import SidebarItem from './SidebarItem';
 
-const Sidebar: React.FC = () => {
+type MenuItem = {
+  key: string;
+  label: string;
+};
+
+const menus: MenuItem[] = [
+  { key: 'menu-1', label: 'Menu1' },
+  { key: 'menu-2', label: 'Menu2' },
+  { key: 'menu-3', label: 'Menu3' },
+  { key: 'menu-4', label: 'Menu4' },
+  { key: 'menu-5', label: 'Menu5' }
+];
+
+export type SidebarProps = {
+  className?: string;
+};
+
+const SidebarStyle = css`
+  background-color: #fff;
+  > nav {
+    height: 100%;
+  }
+`;
+
+const Sidebar: React.FC<SidebarProps> = props => {
+  const menu = menus.map(v => (
+    <SidebarItem
+      key={v.key}
+      label={v.label}
+      css={css`
+        height: 40px;
+      `}
+    />
+  ));
+
   return (
-    <div className="sidebar-root">
-      <nav>
-        <div>あ</div>
-        <div>い</div>
-        <div>う</div>
-        <div>え</div>
-        <div>お</div>
-      </nav>
+    <div css={SidebarStyle} {...props}>
+      <nav>{menu}</nav>
     </div>
   );
 };
 
-const StyledSidebar: React.FC = () => {
-  return <Sidebar />;
-};
-
-export default StyledSidebar;
+export default Sidebar;
