@@ -51,7 +51,7 @@ const contents = [
   },
   {
     path: '/',
-    component: <FirstContent css={contentStyle} />
+    component: <div css={contentStyle}>Please select from the menu on the left.</div>
   }
 ];
 
